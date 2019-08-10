@@ -18,7 +18,7 @@ import lombok.experimental.Accessors;
  * 商品信息
  * </p>
  *
- * @author chenxiangyu
+ * @author chenxiangyu  come on
  * @since 2019-01-25
  */
 @Data
