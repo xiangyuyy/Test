@@ -25,7 +25,7 @@ public class GoodtypeServiceImplTest {
 	private IGoodtypeService goodtyperService;
 	@Autowired
 	private IStudentService StudentrService;
-	
+	//s
 	@Autowired
 	private TestOneConfig testOneConfig;
 	@Autowired
