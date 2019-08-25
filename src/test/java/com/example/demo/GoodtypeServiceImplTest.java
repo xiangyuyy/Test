@@ -53,7 +53,7 @@ public class GoodtypeServiceImplTest {
 	@Test
 	public void getAllGoodsByMyselfMapper() {
 		goodService.getAllGoodList();
-		System.out.println("开心死了！");
+		System.out.println("开心死了！");//s
 		System.err.println(testOneConfig.getFirst());
 		System.err.println(testOneConfig.getSecond());
 	}
