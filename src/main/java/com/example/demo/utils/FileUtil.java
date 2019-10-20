@@ -585,6 +585,7 @@ public class FileUtil {
          String line = br.readLine(); //���ļ���ȡһ���ַ���
          //�ж϶�ȡ�����ַ����Ƿ�Ϊ��
          while (line != null) {
+           System.out.println(line);
            filecontent += line + "\n";
            line = br.readLine(); //���ļ��м�����ȡһ������
          }

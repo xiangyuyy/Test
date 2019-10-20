@@ -1,10 +1,12 @@
 package com.example.demo;
 
-import java.awt.List;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.LinkedList;
+import java.util.*;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -59,10 +61,47 @@ public class DemoApplicationTests {
 		}
 	}
 	@Test
-	public void testList() {
-		LinkedList<String> list = new LinkedList<String>();
-		list.listIterator();
-	}
+	public void testList() throws ParseException {
 
+/*        Date date = new Date();
+        DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        String s = format1.format(date);
+        Date today = format1.parse(s);
+        Calendar c = Calendar.getInstance();
+        c.setTime(today);
+        c.add(Calendar.DAY_OF_MONTH, 1);
+        Date tomorrow = c.getTime();//明天
+        System.out.println(1212);*/
+
+/*	    Object o = new ArrayList<>();
+        List<String> list = (List<String>) o;
+
+        List<String> lista = new ArrayList<>();
+        List<String> listW =  (List<String>) lista;
+
+        System.out.println("234234");*/
+
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String s = simpleDateFormat.format(date);
+        Date today = simpleDateFormat.parse(s);
+        Calendar c = Calendar.getInstance();
+        c.setTime(today);
+        c.add(Calendar.DAY_OF_MONTH, -1);
+        Date yesterday = c.getTime();//昨天
+
+/*        DateFormat df = DateFormat.getDateInstance();
+        Date date = new Date();
+        DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        String s = df.format(date);
+        Date today = format1.parse(s);
+        Calendar c = Calendar.getInstance();
+        c.setTime(today);
+        c.add(Calendar.DAY_OF_MONTH, 1);
+        Date tomorrow = c.getTime();//这是明天
+        c.setTime(today);
+        c.add(Calendar.DAY_OF_MONTH, -1);
+        Date yesterday = c.getTime();//这是昨天*/
+	}
 }
 

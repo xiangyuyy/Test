@@ -36,6 +36,6 @@ public class Teacher{
 
     private String Name;
 
-
+    private Integer Age;
 
 }
