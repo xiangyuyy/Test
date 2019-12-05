@@ -2,11 +2,15 @@ package com.example.demo.teacher.web;
 
 import java.util.List;
 
+import com.example.demo.TextThreadWrite;
+import com.example.demo.teacherfortestthread.service.ITeacherfortestthreadService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
@@ -29,6 +33,9 @@ public class TeacherController {
     private static final Logger logger = LoggerFactory.getLogger(TeacherController.class);
 	@Autowired
 	private ITeacherService  teacherService;
+
+	@Autowired
+	ITeacherfortestthreadService iTeacherfortestthreadService;
 	@RequestMapping("/teacher")
 	public ModelAndView  index() {
 		ModelAndView mav1=new ModelAndView();
@@ -55,6 +62,22 @@ public class TeacherController {
 		}
 		 mav.setViewName("loginin");
 		 return mav;
+	}
+	@GetMapping("/Test")
+    @ResponseBody
+	public  String getTest(){
+		List<Teacher> list = teacherService.selectList(new EntityWrapper<>());
+		Long begin = System.currentTimeMillis();
+/*		try {
+			TextThreadWrite.exec(list,iTeacherfortestthreadService);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}*/
+		Long end = System.currentTimeMillis();
+		Long run = end - begin;
+		//Thread.sleep(20000);
+		System.out.println("运行时间"+run);
+		return  "Test";
 	}
 }
 

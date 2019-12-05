@@ -6,6 +6,7 @@ import com.example.demo.teacher.service.ITeacherService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,5 +19,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> implements ITeacherService {
-
+    public  TeacherServiceImpl(){
+        System.out.println("初始化TeacherServiceImpl");
+    }
 }

@@ -8,6 +8,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import org.assertj.core.util.Lists;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
@@ -15,6 +16,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -24,8 +26,20 @@ import com.alibaba.fastjson.JSONObject;
 @SpringBootTest
 public class DemoApplicationTests {
 
+/*	@Autowired
+	TestLazyBean testLazyBean;*/
+
+	@Autowired
+	TestServer testServer;
 	@Test
 	public void contextLoads() {
+/*		String s = testServer.getString();*/
+		List<Integer> list = Lists.newArrayList();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		list = list.subList(0,3);
 		System.out.println("12122");
 	}
 	@Test
@@ -35,6 +49,8 @@ public class DemoApplicationTests {
 		DateTimeFormatter  dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); 
 		System.out.println(start.format(dateTimeFormatter));
 		System.out.println(start1.format(dateTimeFormatter));
+		//testLazyBean.sayHello();
+
 				
 	}
 	@Test
@@ -63,15 +79,16 @@ public class DemoApplicationTests {
 	@Test
 	public void testList() throws ParseException {
 
-/*        Date date = new Date();
-        DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String s = format1.format(date);
         Date today = format1.parse(s);
         Calendar c = Calendar.getInstance();
         c.setTime(today);
-        c.add(Calendar.DAY_OF_MONTH, 1);
+        c.add(Calendar.HOUR_OF_DAY, -2);
+        //c.add(Calendar.MINUTE,-30);
         Date tomorrow = c.getTime();//明天
-        System.out.println(1212);*/
+        System.out.println(1212);
 
 /*	    Object o = new ArrayList<>();
         List<String> list = (List<String>) o;
@@ -81,14 +98,14 @@ public class DemoApplicationTests {
 
         System.out.println("234234");*/
 
-        Date date = new Date();
+/*        Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String s = simpleDateFormat.format(date);
         Date today = simpleDateFormat.parse(s);
         Calendar c = Calendar.getInstance();
         c.setTime(today);
         c.add(Calendar.DAY_OF_MONTH, -1);
-        Date yesterday = c.getTime();//昨天
+        Date yesterday = c.getTime();//昨天*/
 
 /*        DateFormat df = DateFormat.getDateInstance();
         Date date = new Date();

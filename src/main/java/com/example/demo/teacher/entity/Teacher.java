@@ -23,7 +23,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 /*@EqualsAndHashCode(callSuper = true)*/
-@Accessors(chain = true)
+//@Accessors(chain = true)
 public class Teacher{
 
     private static final long serialVersionUID = 1L;
@@ -38,4 +38,10 @@ public class Teacher{
 
     private Integer Age;
 
+    public  Integer getAge(){
+        if (Name =="陈相宇"){
+            return 17;
+        }
+        return Age;
+    }
 }
