@@ -41,7 +41,7 @@ public class TeacherController {
 		ModelAndView mav1=new ModelAndView();
 		 mav1.addObject("message", "helloWorld");
 		    EntityWrapper<Teacher> ew=new EntityWrapper<Teacher>();
-		    Page<Teacher> page = new Page<Teacher>(1, 5);		    
+		    Page<Teacher> page = new Page<Teacher>(1, 5);
 		    Page<Teacher> teacherIPage= teacherService.selectPage(page,ew);;
 		 mav1.addObject("teacherIPage", teacherIPage);
 		 mav1.setViewName("login");
