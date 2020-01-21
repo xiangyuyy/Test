@@ -1,14 +1,7 @@
 package com.example.demo.bicyle.entity;
-
-import com.baomidou.mybatisplus.activerecord.Model;
-import java.io.Serializable;
-
-
-
-import com.baomidou.mybatisplus.annotations.Version;
-
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
@@ -25,10 +18,13 @@ public class Bicyle  {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId(value = "userid")
     private Integer userid;
 
     private String path;
 
     private Integer level;
+
+    private Integer vision;
 
 }
