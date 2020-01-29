@@ -2,7 +2,6 @@ package com.example.demo.teacher.web;
 
 import java.util.List;
 
-import com.example.demo.TextThreadWrite;
 import com.example.demo.teacherfortestthread.service.ITeacherfortestthreadService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,9 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.example.demo.DemoApplication;
 import com.example.demo.teacher.entity.Teacher;
 import com.example.demo.teacher.service.ITeacherService;
 

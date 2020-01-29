@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.testdemo;
 
 import java.io.IOException;
 import java.util.concurrent.BrokenBarrierException;

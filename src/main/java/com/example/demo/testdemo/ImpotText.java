@@ -1,22 +1,21 @@
-package com.example.demo;
+package com.example.demo.testdemo;
 
-import com.example.demo.bicyle.entity.Bicyle;
-import com.example.demo.bicyle.service.IBicyleService;
 import com.example.demo.teacher.entity.Teacher;
 import com.example.demo.teacher.service.ITeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import java.io.*;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-public class ImpotTextBicyle {
+public class ImpotText {
+    @Autowired
+    ITeacherService teacherService;
     public static void main(String[] args) {
-     /*   List<String> list = new ArrayList<String>();
-       // String path = "C:\\Users\\xiaoh\\Desktop\\sso-logs\\205\\sso_localhost_access_log.2019-08-30.txt";
+/*        List<String> list = new ArrayList<String>();
+*//*        String path = "C:\\Users\\xiaoh\\Desktop\\sso-logs\\205\\sso_localhost_access_log.2019-08-30.txt";*//*
         String path = "C:\\Users\\xiaoh\\Desktop\\sso-logs\\205\\test.txt";
         try {
             File f = new File(path);
@@ -40,14 +39,14 @@ public class ImpotTextBicyle {
             e.printStackTrace();
         }
         try {
-            exec(list,bicyleService);
+            exec(list,teacherService);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
     }
 
-    public  static void exec(List<String> list,IBicyleService bicyleService) throws InterruptedException {
-        int count = 300;                   //一个线程处理300条数据
+    public static void exec(List<String> list,ITeacherService teacherService) throws InterruptedException {
+        int count = 3000;                   //一个线程处理300条数据
         int listSize = list.size();        //数据集合大小
         int runSize = (listSize / count) + 1;  //开启的线程数
         List<String> newlist = null;       //存放每个线程的执行数据
@@ -68,7 +67,7 @@ public class ImpotTextBicyle {
                 newlist = list.subList(startIndex, endIndex);
             }
             //线程类
-            MyThreads mythead = new MyThreads(newlist, begin, end,bicyleService);
+            MyThread mythead = new MyThread(newlist, begin, end,teacherService);
             //这里执行线程的方式是调用线程池里的executor.execute(mythead)方法。
 
             executor.execute(mythead);
@@ -82,18 +81,18 @@ public class ImpotTextBicyle {
     }
 }
 
-class MyThreads implements Runnable {
+class MyThread implements Runnable {
     private List<String> list;
     private CountDownLatch begin;
     private CountDownLatch end;
-    private IBicyleService bicyleService;
+    private ITeacherService teacherService;
 
     //创建个构造函数初始化 list,和其他用到的参数
-    public MyThreads(List<String> list, CountDownLatch begin, CountDownLatch end,IBicyleService bicyleService) {
+    public MyThread(List<String> list, CountDownLatch begin, CountDownLatch end,ITeacherService teacherService) {
         this.list = list;
         this.begin = begin;
         this.end = end;
-        this.bicyleService = bicyleService;
+        this.teacherService = teacherService;
     }
 
     @Override
@@ -102,21 +101,15 @@ class MyThreads implements Runnable {
             for (int i = 0; i < list.size(); i++) {
                 //这里还要说一下，，由于在实质项目中，当处理的数据存在等待超时和出错会使线程一直处于等待状态
                 //分批 批量插入
-                Bicyle bicyle = new Bicyle();
-                int beginIndex = list.get(i).indexOf("l : ");
-                int endIndex = list.get(i).indexOf("死循环路径");
-                String userId = list.get(i).substring(beginIndex+3, endIndex).trim();
-                String path = list.get(i).substring(endIndex+5, list.get(i).length());
-                int lelev = path.split("-").length;
-                System.out.println(userId);
-/*                System.out.println(path);
-                System.out.println(path.replace("s",""));
-                System.out.println(lelev);*/
-                bicyle.setLevel(lelev);
-                bicyle.setPath(path.replace("s",""));
-                bicyle.setUserid(Integer.parseInt(userId));
-               bicyleService.insert(bicyle);
-
+                Teacher teacher = new Teacher();
+                int beginIndex = list.get(i).indexOf("POST");
+                if (beginIndex > 0) {
+                    int endIndex = list.get(i).indexOf("HTTP");
+                    String b = list.get(i).substring(beginIndex, endIndex);
+                    System.out.println(b);
+                    teacher.setName(b);
+                    teacherService.insert(teacher);
+                }
             }
 
             //执行完让线程直接进入等待

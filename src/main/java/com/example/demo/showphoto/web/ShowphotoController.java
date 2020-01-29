@@ -1,29 +1,18 @@
 package com.example.demo.showphoto.web;
 
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Date;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.common.DataBaseUtils;
 import com.example.demo.common.PagePara;
 import com.example.demo.common.PageVo;
 import com.example.demo.common.Result;
-import com.example.demo.good.entity.Good;
-import com.example.demo.good.service.IGoodService;
 import com.example.demo.showphoto.entity.Showphoto;
 import com.example.demo.showphoto.service.IShowphotoService;
 
@@ -95,5 +84,5 @@ public class ShowphotoController {
 			result.setMsg("提交失败");
 		}
 		return result; 
-	}	
+	}
 }

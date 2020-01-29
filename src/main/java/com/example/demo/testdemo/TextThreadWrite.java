@@ -1,16 +1,11 @@
-package com.example.demo;
+package com.example.demo.testdemo;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.example.demo.teacher.entity.Teacher;
 import com.example.demo.teacher.service.ITeacherService;
-import com.example.demo.teacherfortestthread.entity.Teacherfortestthread;
 import com.example.demo.teacherfortestthread.service.ITeacherfortestthreadService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.beans.BeanCopier;
 
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

@@ -1,28 +1,17 @@
 package com.example.demo;
 
-import static org.junit.Assert.*;
-
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import com.example.demo.bicyle.service.IBicyleService;
-import com.example.demo.teacher.entity.Teacher;
 import com.example.demo.teacher.service.ITeacherService;
-import com.example.demo.utils.FileUtil;
+import com.example.demo.testdemo.ImpotTextBicyle;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import com.example.demo.common.ConfigBeanValue;
-import com.example.demo.common.TestOneConfig;
-import com.example.demo.good.service.IGoodService;
-import com.example.demo.goodtype.entity.Goodtype;
-import com.example.demo.goodtype.service.IGoodtypeService;
-import com.example.demo.student.entity.Student;
-import com.example.demo.student.service.IStudentService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
