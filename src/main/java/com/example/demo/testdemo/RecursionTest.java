@@ -8,6 +8,7 @@ package com.example.demo.testdemo;
 public class RecursionTest {
     public static void main(String[] args) {
        Integer i = 0;
+
         test(i);
         System.out.println(i);
     }
