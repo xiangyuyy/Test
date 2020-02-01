@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * <p>
@@ -55,12 +59,35 @@ public class BicyleController {
             if (Objects.isNull(bicyle1)){
                 System.out.println("---------null");
                 return "fail";
+
             }
             System.out.println("---------getVision" +bicyle1.getVision());
             bicyle1.setVision(bicyle1.getVision() + 1);
             bicyle1.setLevel(bicyle1.getLevel() - 1);
             boolean result = bicyleService.updateById(bicyle1);
             System.out.println("---------result"+result);
+        }
+        return "sucess";
+    }
+    @RequestMapping("/testThreadPool")
+    public String testThreadPool() {
+        AtomicInteger atomicInteger = new AtomicInteger(0) ;
+        ExecutorService executor = Executors.newFixedThreadPool(120); //创建一个线程池，数量和开启线程的数量一样
+        for (int i = 0; i <20000 ; i++) {
+            executor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    Bicyle bicyle = new Bicyle();
+                    bicyle.setVision(atomicInteger.get());
+                    bicyleService.insert(bicyle);
+                }
+            });
+        }
+        executor.shutdown();
+        try {
+            executor.awaitTermination(1, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         return "sucess";
     }

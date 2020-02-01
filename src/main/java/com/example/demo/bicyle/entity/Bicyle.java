@@ -18,7 +18,7 @@ public class Bicyle  {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "userid")
+    @TableId(value = "userid",type = IdType.AUTO)
     private Integer userid;
 
     private String path;
