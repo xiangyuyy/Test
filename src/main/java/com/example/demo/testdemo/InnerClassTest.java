@@ -10,6 +10,16 @@ public class InnerClassTest {
         InnerClassTest t = new InnerClassTest();
         t.test(1);
         t.test(2);
+        String s = Integer.toBinaryString(5);
+        Integer sa = 1;
+        //Inner.Inners inners = new Inner().new Inners();
+        //inners.u();
+    }
+
+    private void g(){
+        RecursionTest test = new RecursionTest();
+       /* RecursionTest.Inners inners  = test.new test.Inners();
+        inners.u();*/
     }
 
      void test(final int b) { //局部内部类
@@ -21,4 +31,12 @@ public class InnerClassTest {
             };
         }.start();
     }
+
+   /*public  class Inner{
+        private  class Inners{
+            private void u(){
+
+            }
+        }
+    }*/
 }

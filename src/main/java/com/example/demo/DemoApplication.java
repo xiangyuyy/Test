@@ -20,10 +20,9 @@ public class DemoApplication {
 	/**
 	 * @param args
 	 */
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 		logger.info("========================启动完毕========================");
 	}
-
 }

@@ -23,7 +23,7 @@ public class CounterABA {
             System.out.println("incrementAndGet" + count.incrementAndGet());
             System.out.println("getAndIncrement" + count.getAndIncrement());
         }
-        safeAtomicStampedReferenceCounter unsafeCounter = new safeAtomicStampedReferenceCounter();
+        safeAtomicReferenceCounter unsafeCounter = new safeAtomicReferenceCounter();
         ExecutorService executorService = Executors.newCachedThreadPool();
         for (int i = 0; i < 10000; i++) {
             executorService.execute(unsafeCounter);
@@ -91,7 +91,7 @@ class safeCounter implements Runnable {
 
 /**
  * f
- * 有时间 戳的
+ * 有时间 戳的  compareAndSet可能存在失败 不一定累加成功
  */
 class safeAtomicStampedReferenceCounter implements Runnable {
     public AtomicStampedReference<Integer> count = new AtomicStampedReference(0, 0);//如果同时进入 有一部分+1是不成功的
@@ -123,10 +123,11 @@ class safeAtomicStampedReferenceCounter implements Runnable {
     }
 }
 
+//compareAndSet可能存在失败 不一定累加成功
 class safeAtomicReferenceCounter implements Runnable {
     private AtomicReference<Integer> count = new AtomicReference<Integer>(0);
 
-  /*  public void add() {
+  /*  public void add() { //累加成功
         while (true) {
             System.out.println(Thread.currentThread().getName()+"add--------" + get());
             Integer temp = count.get();
@@ -139,11 +140,11 @@ class safeAtomicReferenceCounter implements Runnable {
     }*/
 
     public void add() {
-            System.out.println(Thread.currentThread().getName()+"add--------" + get());
+            //System.out.println(Thread.currentThread().getName()+"add--------" + get());
             Integer temp = count.get();
             Boolean b = count.compareAndSet(temp, temp + 1);
-            if (b) {
-                System.out.println("true--------" + get());
+            if (!b) {
+                System.out.println("false--------" + get());
             }
     }
 
