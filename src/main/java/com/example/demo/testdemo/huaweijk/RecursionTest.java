@@ -1,4 +1,4 @@
-package com.example.demo.testdemo;
+package com.example.demo.testdemo.huaweijk;
 
 import com.example.demo.bicyle.entity.Bicyle;
 

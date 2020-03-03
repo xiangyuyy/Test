@@ -1,4 +1,4 @@
-package com.example.demo.testdemo;
+package com.example.demo.testdemo.huaweijk;
 
 import java.math.BigDecimal;
 import java.util.Scanner;

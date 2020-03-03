@@ -34,6 +34,9 @@ public class TestExcel {
         while (sc.hasNext()) {
                 String s  = sc.next();//这n个数先放进有个数组里面
                 ss +=s;
+                if (s.equals("a")){
+                    break;
+                }
         }
 
         System.out.println("ss = " + ss);
