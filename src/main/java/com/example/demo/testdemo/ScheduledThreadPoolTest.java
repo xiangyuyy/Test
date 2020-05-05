@@ -13,7 +13,7 @@ import java.util.concurrent.*;
 public class ScheduledThreadPoolTest {
 
     public static void main(String[] args) {
-        ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(3);
+        ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(1);
         DelayQueueDemo.DelayedElement delayedElement = new DelayQueueDemo.DelayedElement(1000,"msg");
         DelayQueueDemo.DelayedElement delayedElement1 = new DelayQueueDemo.DelayedElement(4000,"msg1");
         BlockingQueue<DelayQueueDemo.DelayedElement> deque = new DelayQueue<>();
@@ -31,15 +31,15 @@ public class ScheduledThreadPoolTest {
             /*       for(int i=0; i<2; i++){*/
             //Thread.sleep(1000);
             WorkerThread worker = new WorkerThread("111111", deque);
-/*            WorkerThread worker1 = new WorkerThread("22222",deque1);
-            WorkerThread worker2 = new WorkerThread("33333",deque2);*/
+            WorkerThread worker1 = new WorkerThread("22222",deque1);
+            WorkerThread worker2 = new WorkerThread("33333",deque2);
             //延迟5秒后执行
-            ScheduledFuture scheduledFuture = scheduledThreadPool.schedule(worker, 0, TimeUnit.SECONDS);
-/*            scheduledThreadPool.schedule(worker1, 0, TimeUnit.SECONDS);
-            scheduledThreadPool.schedule(worker2, 0, TimeUnit.SECONDS);*/
+            ScheduledFuture scheduledFuture = scheduledThreadPool.schedule(worker, 2, TimeUnit.SECONDS);
+            scheduledThreadPool.schedule(worker1, 10, TimeUnit.SECONDS);
+            scheduledThreadPool.schedule(worker2, 20, TimeUnit.SECONDS);
             /*  }*/
            Thread.sleep(300);
-           scheduledFuture.cancel(true);
+           //scheduledFuture.cancel(true);
             //Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();

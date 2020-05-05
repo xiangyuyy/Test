@@ -22,6 +22,7 @@ public class WorkerThread implements Runnable {
     }
     @Override
     public void run() {
+        System.out.println(Thread.currentThread().getName() + " Join. Time = " + getNowDate()+"--"+name);
         while (delayedElements.size()>0) {
             try {
                 DelayQueueDemo.DelayedElement delayedElement =  delayedElements.take();

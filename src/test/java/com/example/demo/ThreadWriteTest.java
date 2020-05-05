@@ -6,6 +6,7 @@ import com.example.demo.teacher.entity.Teacher;
 import com.example.demo.teacher.service.ITeacherService;
 import com.example.demo.teacherfortestthread.entity.Teacherfortestthread;
 import com.example.demo.teacherfortestthread.service.ITeacherfortestthreadService;
+import com.example.demo.testdemo.TesPublic;
 import com.example.demo.testdemo.WebConsoleService;
 import net.sf.cglib.beans.BeanCopier;
 import org.junit.Test;
@@ -31,6 +32,9 @@ public class ThreadWriteTest {
 
     @Autowired
     ITeacherService teacherService;
+
+    @Autowired
+    TesPublic tesPublic;
     @Autowired
     ITeacherfortestthreadService iTeacherfortestthreadService;
     @Autowired
@@ -47,11 +51,13 @@ public class ThreadWriteTest {
     @Test
     public void testImportTestBicyle() throws InterruptedException {
 
-        webConsoleService.webConsole("ce************","",2);
-        webConsoleService.webConsole("ce~~~~~~~~~~~~","",10);
-        Thread.sleep(30000);
-        webConsoleService.close("ce~~~~~~~~~~~~");
-        Thread.sleep(1000000);
+        //webConsoleService.webConsole("ce************","",2);
+        //webConsoleService.webConsole("ce~~~~~~~~~~~~","",10);
+        //Thread.sleep(30000);
+        //webConsoleService.close("ce~~~~~~~~~~~~");
+        //Thread.sleep(1000000);
+        tesPublic.get();
+        tesPublic.get();
 
 /*        ScheduledThreadPoolExecutor mScheduledThreadPoolExecutor = new ScheduledThreadPoolExecutor(20);
         mScheduledThreadPoolExecutor.scheduleAtFixedRate(new Runnable() {
@@ -74,7 +80,7 @@ public class ThreadWriteTest {
                 mScheduledThreadPoolExecutor.shutdown();
             }
         }).start();*/
-        Thread.sleep(100000);
+        //Thread.sleep(100000);
         System.out.println("1212 = " + 1212);
 /*        List<Teacher> list = teacherService.selectList(new EntityWrapper<>());
         Long begin = System.currentTimeMillis();
